@@ -4,16 +4,10 @@ import { useLocation } from "react-router";
 function ViewProductPage(props) {
   const [product, setProduct] = useState(null);
 
-  //Ask React for the location object
   const location = useLocation();
 
-  //Use useEffect so that when the location changes
-  //we update our product state with the product defined
-  //by the link
   useEffect(() => {
     if (location.state) {
-      //Get the product from the state object
-      //from the location
       const { product } = location.state;
       setProduct(product);
     }
@@ -21,8 +15,6 @@ function ViewProductPage(props) {
 
   console.log({ product, location });
   
-  //When the component first renders, we won't
-  //have the product yet
   if (!product) return <div>Loading...</div>;
 
   return (
